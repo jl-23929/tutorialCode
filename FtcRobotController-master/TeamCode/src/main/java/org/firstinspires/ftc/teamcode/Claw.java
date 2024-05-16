@@ -6,17 +6,17 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class Claw {
 
     Servo leftClaw, rightClaw;
-    double leftClawOpen = 1, leftClawClose = 0;
-    double rightClawOpen = 1, rightClawClose = 0;
+    double leftClawOpen = 1, leftClawClose = 0; //TODO: These values need to be tuned. (Lollback)
+    double rightClawOpen = 1, rightClawClose = 0; //TODO: These values need to be tuned. (Lollback)
 
-    public  Claw (Servo leftClaw, Servo rightClaw){
+    public Claw(Servo leftClaw, Servo rightClaw) {
         this.leftClaw = leftClaw;
         this.rightClaw = rightClaw;
 
     }
 
     public void leftClawOpen() {
-    leftClaw.setPosition(leftClawOpen);
+        leftClaw.setPosition(leftClawOpen);
     }
 
     public void rightClawOpen() {
