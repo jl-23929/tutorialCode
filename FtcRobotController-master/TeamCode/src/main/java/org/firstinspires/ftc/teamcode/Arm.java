@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 public class Arm {
     DcMotor armMotor;
 
-    double kP, kI, kD, kF;
+    double kP = 1, kI = 0, kD = 0, kF = 0; //TODO: These values will need to be tuned.
 
 
     double motorTicks = 288; //TODO: Check value for the motor used. (It will also need to be adapted for differing gear ratios) (Lollback)
