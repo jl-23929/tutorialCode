@@ -1,14 +1,14 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp(name = "Basic TeleOp", group = "TeleOp")
-//Telemetry Operated OpModes are located underneath the right button of the Driver Station, while Autonomous OpModes are under the left. Putting the group as TeleOp is unnecessary. (Lollback)
-public class OpMode extends com.qualcomm.robotcore.eventloop.opmode.OpMode {
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous
+public class Autonomous extends OpMode {
 
     Robot robot;
+    ElapsedTime timer;
 
     @Override
     public void init() {
@@ -23,30 +23,36 @@ public class OpMode extends com.qualcomm.robotcore.eventloop.opmode.OpMode {
         robot = new org.firstinspires.ftc.teamcode.Robot(frontLeft, frontRight, rearLeft, rearRight/*, armMotor, leftClaw, rightClaw*/);
         telemetry.addData("Status: ", "Initialised");
         telemetry.update();
+        timer = new ElapsedTime();
+    }
+
+    public void start() {
+        timer.reset();
     }
 
     @Override
     public void loop() {
-        if (gamepad1.right_bumper) {
-            robot.drive.driver(gamepad1);
-        } else {
-            robot.drive.slowDriver(gamepad1);
-
+      /*  while (timer.seconds() <= 1) {
+            robot.drive.driveForward();
         }
-     /*   if (gamepad1.a) {
-            robot.claw.leftClawOpen();
-        }
-        if (gamepad1.b) {
-            robot.claw.rightClawOpen();
-        }
-
-        if (gamepad1.right_bumper) {
-            robot.arm.runToPosition(90);
-        }
-
-        if (gamepad1.left_bumper) {
-            robot.arm.runToPosition(0);
+        robot.drive.stop();
+        while (timer.seconds() <= 1.2) {
+            robot.drive.driveBack();
         } */
+
+        if (timer.seconds() <= 1) {
+            robot.drive.driveForward();
+
+        } else {
+            robot.drive.stop();
+        }
+
+        if (timer.seconds() <= 1.2 && timer.seconds() > 1) {
+        }
+        if (timer.seconds() <= 1.4 && timer.seconds() > 1.2){
+            robot.drive.driveBack();
+        }
 
     }
 }
+

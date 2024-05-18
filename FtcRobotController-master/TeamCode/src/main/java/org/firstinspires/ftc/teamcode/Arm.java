@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 public class Arm {
     DcMotor armMotor;
 
-    double kP = 1, kI = 0, kD = 0, kF = 0; //TODO: These values will need to be tuned.
+    double kP = 1, kI = 0, kD = 0, kF = 0; //TODO: These values will need to be tuned. (Lollback)
 
 
     double motorTicks = 288; //TODO: Check value for the motor used. (It will also need to be adapted for differing gear ratios) (Lollback)
@@ -31,7 +31,7 @@ public class Arm {
 
         double pid = armController.calculate(armPos, targetAngle/motorTicks);
 
-        double ff = Math.cos(Math.toRadians(targetAngle/ticksPerDegree)) * kF; //The cosine of the angle
+        double ff = Math.cos(Math.toRadians(targetAngle/ticksPerDegree)) * kF; //The cosine of the angle (Lollback)
 
         double power = pid+ff;
 
