@@ -12,15 +12,8 @@ public class Autonomous extends OpMode {
 
     @Override
     public void init() {
-        DcMotor frontLeft = hardwareMap.get(DcMotor.class, "frontLeft"),
-                frontRight = hardwareMap.get(DcMotor.class, "frontRight"),
-                rearLeft = hardwareMap.get(DcMotor.class, "rearLeft"),
-                rearRight = hardwareMap.get(DcMotor.class, "rearRight");
 
-        //   Servo leftClaw = hardwareMap.get(Servo.class, "leftClaw"), rightClaw = hardwareMap.get(Servo.class, "rightClaw");
-
-        //   DcMotor armMotor = hardwareMap.get(DcMotor.class, "armMotor");
-        robot = new org.firstinspires.ftc.teamcode.Robot(frontLeft, frontRight, rearLeft, rearRight/*, armMotor, leftClaw, rightClaw*/);
+        robot = new org.firstinspires.ftc.teamcode.Robot(hardwareMap);
         telemetry.addData("Status: ", "Initialised");
         telemetry.update();
         timer = new ElapsedTime();

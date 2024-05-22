@@ -4,9 +4,11 @@ package org.firstinspires.ftc.teamcode;
 import com.arcrobotics.ftclib.controller.PIDController;
 import com.arcrobotics.ftclib.controller.PIDFController;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Arm {
-    DcMotor armMotor;
+    DcMotorEx armMotor;
 
     double kP = 1, kI = 0, kD = 0, kF = 0; //TODO: These values will need to be tuned. (Lollback)
 
@@ -17,8 +19,8 @@ public class Arm {
 
     PIDController armController;
 
-    public Arm(DcMotor armMotor) {
-        this.armMotor = armMotor;
+    public Arm(HardwareMap map) {
+        armMotor = map.get(DcMotorEx.class, "armMotor");
         armMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         armController = new PIDController(kP, kI, kD);
