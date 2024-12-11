@@ -12,7 +12,11 @@ public class robot {
     static double totalCurrent = 0;
 
     public static void init(HardwareMap hardwareMap) {
+        //Init the various module classes by passing around the hardwareMap object.
+        //This is important, or you will get a Null Pointer Exception.
         drivebase.init(hardwareMap);
+        arm.init(hardwareMap);
+
 
         //Lynx Module enables bulk reading of sensors, lowering loop times.
         allHubs = hardwareMap.getAll(LynxModule.class);
