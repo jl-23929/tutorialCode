@@ -4,6 +4,8 @@ import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
+import org.firstinspires.ftc.teamcode.modules.arm;
+import org.firstinspires.ftc.teamcode.modules.drivebase;
 
 import java.util.List;
 
@@ -17,14 +19,11 @@ public class robot {
         drivebase.init(hardwareMap);
         arm.init(hardwareMap);
 
-
         //Lynx Module enables bulk reading of sensors, lowering loop times.
         allHubs = hardwareMap.getAll(LynxModule.class);
         for (LynxModule hub : allHubs) {
             hub.setBulkCachingMode(LynxModule.BulkCachingMode.AUTO);
         }
-
-
     }
     //Returns the total current draw of the robot. This can be used to determine if there are issues with the battery or robot design.
     //If the current draw is too high, investigate the current draw of individual motors, but they must be DcMotorEx objects, not DcMotor.
