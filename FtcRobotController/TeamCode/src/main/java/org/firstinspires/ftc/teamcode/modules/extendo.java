@@ -11,5 +11,13 @@ public class extendo {
         extendoServo = hardwareMap.get(Servo.class, "extendoServo");
     }
 
+    public static void extend() {
+        extendoServo.setPosition(1);
+    }
+
+    public static void retract() {
+        extendoServo.setPosition(0);
+    }
+
 
 }

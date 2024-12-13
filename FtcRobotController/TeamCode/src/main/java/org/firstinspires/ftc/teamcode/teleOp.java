@@ -14,11 +14,14 @@ public class teleOp extends LinearOpMode {
 
         waitForStart();
 
-        clawIntake.clawState = clawIntake.ClawState.REST;
-
         while (opModeIsActive()) {
             drivebase.fieldDrive(gamepad1);
-
+            if (gamepad1.a) {
+                FSM.setRobotState(FSM.RobotState.INTAKE_OPEN);
+            }
+            if (gamepad1.b) {
+                FSM.setRobotState(FSM.RobotState.OUTTAKE_OPEN);
+            }
             telemetry.addData("Current Draw: ", robot.getCurrent());
         }
     }

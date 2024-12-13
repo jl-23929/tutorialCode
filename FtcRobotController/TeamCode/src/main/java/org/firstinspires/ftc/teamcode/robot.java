@@ -20,7 +20,7 @@ public class robot {
         drivebase.init(hardwareMap);
         arm.init(hardwareMap);
         extendo.init(hardwareMap);
-
+        FSM.init();
         //Lynx Module enables bulk reading of sensors, lowering loop times.
         allHubs = hardwareMap.getAll(LynxModule.class);
         for (LynxModule hub : allHubs) {
